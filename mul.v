@@ -3,9 +3,15 @@ module MUL(
  output reg [15:0] out
 );
 
+reg signed [3:0] a,b,c,d;
+
 always @* begin
-    out[7:0] = in1[7:4]*in2[3:0] + in1[3:0]*in2[7:4];
-    out[15:8] = in1[7:4]*in2[7:4] - in1[3:0]*in2[3:0];
+    a = in1[7:4];
+    b = in1[3:0];
+    c = in2[7:4];
+    d = in2[3:0];
+    out[7:0] = a*d + b*c;
+    out[15:8] = a*c - b*d;
 end
 
 endmodule
