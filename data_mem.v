@@ -8,8 +8,8 @@ module data_mem(
     input [5 : 0] read_address2,
     input [5 : 0] write_address,
 
-    output [7 : 0] out_data1;
-    output [7 : 0] out_data2;
+    output reg [7 : 0] out_data1,
+    output reg [7 : 0] out_data2
 
 );
 

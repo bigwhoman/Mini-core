@@ -7,7 +7,7 @@ module inst_mem(
     input [4 : 0] read_address,
     input [4 : 0] write_address,
 
-    output [19 : 0] out_data;
+    output reg [19 : 0] out_data
 
 );
 
