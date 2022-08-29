@@ -2,8 +2,13 @@ module CPU (
  input clk,rst,inst_mem_read_write,
  input [19:0] input_inst,
  input [7:0] memory_data_in,
+ input [5:0] mem_write_adr_imediate,
  output reg halted
 );
+
+
+// freeze the pipelines
+wire freeze;
 
 
 // -------------------------  instruction fetch and pipeline --------------------------------------
@@ -33,6 +38,8 @@ IF inst_fetch_pipeline(
 //inputs
 .ld_inst_halt(inst_mem_read_write), // is it only needed in here or its needed in the other pipelines as well??
 .instruction(inst_out_data),
+.freeze(freeze),
+.clk(clk),
 
 //outputs
 .instruction_out(inst_if_out)
@@ -48,6 +55,7 @@ wire data_mem_enable;
 wire [7:0] mem_data_out_1,mem_data_out_2;
 
 data_mem data_memory(
+//inputs
     .clk(clk),
     .rst(rst),
     .enable(data_mem_enable),
@@ -57,6 +65,8 @@ data_mem data_memory(
     .read_address2(inst_if_out[11:6]),
     .write_address(write_adr_ex_out),
 
+
+//outputs
     .out_data1(mem_data_out_1),
     .out_data2(mem_data_out_2)
 
@@ -73,8 +83,10 @@ LD load_pipeline(
 .halted(halted_cu_out),
 .write_adr(inst_if_out[5:0]),
 .alu_inst(inst_if_out[19:18]),
-.mem_data_out_1(mem_data_out_1),
-.mem_data_out_2(mem_data_out_2),
+.mem_data_1(mem_data_out_1),
+.mem_data_2(mem_data_out_2),
+.freeze(freeze),
+.clk(clk),
 
 //outputs
 .halted_out(halted_ld_out),
@@ -123,10 +135,13 @@ EX execute_pipeline(
 .halted(halted_ld_out),
 .alu_output(alu_out),
 .write_addr(write_adr_mem_ld_out),
+.data_rw(data_mem_rw),
+.freeze(freeze),
+.clk(clk),
 
 // outputs
 .halted_out(halted),
-.data_rw(read_writenot_data_mem),
+.data_rw_out(read_writenot_data_mem),
 .alu_output_out(alu_ex_out),
 .write_addr_out(write_adr_ex_out)
 );
@@ -135,6 +150,8 @@ EX execute_pipeline(
 // ----------------------------- controll unit ---------------------------------------------------------
 
 wire halted_cu_out;
+wire data_mem_rw;
+
 
 CU controll_unit(
 //inputs
@@ -142,7 +159,7 @@ CU controll_unit(
 
 //outputs
 .halted(halted_cu_out),
-
+.data_mem_rw(data_mem_rw)
 );
 
 // --------------------------- reset, halt and instruction fetch(pointer) for the CPU ----------------------------------------------
