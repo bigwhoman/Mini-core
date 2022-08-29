@@ -14,7 +14,7 @@ module inst_mem(
 reg [19 : 0] storage [31 : 0];
 integer i;
 
-always @(posedge rst) begin
+always @(negedge rst) begin
     for(i = 0 ; i < 32 ; i = i + 1) begin
         storage[i] = 0;
     end

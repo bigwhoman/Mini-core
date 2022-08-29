@@ -1,6 +1,6 @@
 module ADD_SUB(
  input [7:0] in1,in2,
- input add_or_sub,
+ input [1:0] add_or_sub,
  output reg [7:0] out
 );
 
@@ -12,10 +12,10 @@ always @* begin
     b = in1[3:0];
     c = in2[7:4];
     d = in2[3:0];
-    if(add_or_sub) begin
+    if(add_or_sub == 1) begin
       out[7:4] = a - c;
       out[3:0] = b - d;
-    end else begin
+    end else if(add_or_sub == 0) begin
       out[7:4] = a + c;
       out[3:0] = b + d;
     end

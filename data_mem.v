@@ -16,7 +16,7 @@ module data_mem(
 reg [7 : 0] storage [63 : 0];
 integer i;
 
-always @(posedge rst) begin
+always @(negedge rst) begin
     for(i = 0 ; i < 64 ; i = i + 1) begin
         storage[i] = 0;
     end
