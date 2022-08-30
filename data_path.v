@@ -59,7 +59,7 @@ data_mem data_memory(
     .clk(clk),
     .rst(rst),
     .enable(data_mem_enable),
-    .read_writenot(read_writenot_data_mem),
+    .write(data_mem_write_out_ex),
     .in_data(alu_ex_out),
     .read_address1(inst_if_out[17:12]),
     .read_address2(inst_if_out[11:6]),
@@ -76,6 +76,7 @@ wire halted_ld_out;
 wire [5:0] write_adr_mem_ld_out;
 wire [1:0] alu_inst_ld_out;
 wire [7:0] data_out_1_ld,data_out_2_ld;
+wire data_mem_write_out_ld;
 
 LD load_pipeline(
 //inputs
@@ -85,6 +86,7 @@ LD load_pipeline(
 .alu_inst(inst_if_out[19:18]),
 .mem_data_1(mem_data_out_1),
 .mem_data_2(mem_data_out_2),
+.data_mem_write(data_mem_write_ld),
 .freeze(freeze),
 .clk(clk),
 
@@ -93,7 +95,23 @@ LD load_pipeline(
 .write_adr_out(write_adr_mem_ld_out),
 .alu_inst_out(alu_inst_ld_out),
 .data_out_1(data_out_1_ld),
-.data_out_2(data_out_2_ld)
+.data_out_2(data_out_2_ld),
+.data_mem_write_out(data_mem_write_out_ld)
+
+);
+
+
+wire halted_cu_out;
+wire data_mem_write_ld;
+
+
+CU controll_unit(
+//inputs
+.op(inst_if_out[19:18]),
+
+//outputs
+.halted(halted_cu_out),
+.data_mem_write(data_mem_write)
 );
 
 // ---------------------------- execute and pipeline ---------------------------------------------------
@@ -138,29 +156,20 @@ EX execute_pipeline(
 .data_rw(data_mem_rw),
 .freeze(freeze),
 .clk(clk),
+.data_mem_write_ex(data_mem_write_out_ld),
 
 // outputs
 .halted_out(halted),
 .data_rw_out(read_writenot_data_mem),
 .alu_output_out(alu_ex_out),
 .write_addr_out(write_adr_ex_out)
+.data_mem_write_out_ex(data_mem_write_out_ex)
 );
 
 
 // ----------------------------- controll unit ---------------------------------------------------------
 
-wire halted_cu_out;
-wire data_mem_rw;
 
-
-CU controll_unit(
-//inputs
-.op(inst_if_out[19:18]),
-
-//outputs
-.halted(halted_cu_out),
-.data_mem_rw(data_mem_rw)
-);
 
 // --------------------------- reset, halt and instruction fetch(pointer) for the CPU ----------------------------------------------
 
