@@ -12,6 +12,7 @@ reg counter;
 always @(posedge clk,negedge rst) begin
   if(rst == 0) begin
     counter = 0;
+    is_done = 0;
   end
   else begin
     if(counter < 2) begin

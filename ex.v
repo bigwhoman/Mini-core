@@ -14,7 +14,7 @@ module EX(
     output reg data_rw_out,
     output reg [7:0] alu_output_out,
     output reg [5:0] write_addr_out,
-    output reg data_mem_write_out_ex;
+    output reg data_mem_write_out_ex
 );
 
 

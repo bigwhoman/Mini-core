@@ -1,8 +1,5 @@
 module CPU (
- input clk,rst,inst_mem_read_write,
- input [19:0] input_inst,
- input [7:0] memory_data_in,
- input [5:0] mem_write_adr_imediate,
+ input clk,rst,
  output reg halted
 );
 
@@ -10,6 +7,10 @@ module CPU (
 // freeze the pipelines
 wire freeze = mul_or_add_ld_out ? !is_done_mul : !is_done_add;
 
+reg inst_mem_read_write;
+wire [19:0] input_inst;
+wire [7:0] memory_data_in;
+wire [5:0] mem_write_adr_imediate;
 
 /*
 operation === > 00 01 10 
@@ -62,7 +63,7 @@ IF inst_fetch_pipeline(
 
 // [7 : 0] out_data1
 // [7 : 0] out_data2
-wire read_writenot_data_mem;
+wire read_writenot_data_mem,data_mem_write_out_ex;
 wire data_mem_enable;
 wire [7:0] mem_data_out_1,mem_data_out_2;
 
@@ -171,6 +172,7 @@ wire [7:0] alu_out = alu_inst_ld_out == 2 ? mul_out : add_sub_out;
 
 wire [7:0] alu_ex_out;
 wire [5:0] write_adr_ex_out;
+wire data_mem_rw;
 
 EX execute_pipeline(
 // inputs
@@ -199,6 +201,7 @@ always @(posedge clk,negedge rst) begin
     halted = 0;
     read_address = 0;
     write_address = 0;
+    inst_mem_read_write = 1;
   end else begin
     if(inst_mem_read_write) begin
       read_address = read_address + 1;

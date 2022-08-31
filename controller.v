@@ -15,7 +15,7 @@ always @(posedge clk) begin
         data_mem_write = 1;
     end 
     
-y    if(op == 1 || op == 0) begin
+    if(op == 1 || op == 0) begin
         mul_or_add = 1;
     end
 
