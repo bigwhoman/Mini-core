@@ -1,0 +1,1192 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.07 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.08 secs
+ 
+--> Reading design: CPU.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "CPU.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "CPU"
+Output Format                      : NGC
+Target Device                      : xc6slx9-2-tqg144
+
+---- Source Options
+Top Module Name                    : CPU
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\mul.v" into library work
+Parsing module <MUL>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\ld.v" into library work
+Parsing module <ld>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\inst_mem.v" into library work
+Parsing module <inst_mem>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\if.v" into library work
+Parsing module <IF>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\ex.v" into library work
+Parsing module <EX>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\data_mem.v" into library work
+Parsing module <data_mem>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\controller.v" into library work
+Parsing module <CU>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\add_sub.v" into library work
+Parsing module <ADD_SUB>.
+Analyzing Verilog file "H:\Sharif\term4.5\dsd_lab\8\data_path.v" into library work
+Parsing module <CPU>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <CPU>.
+
+Elaborating module <inst_mem>.
+WARNING:HDLCompiler:634 - "H:\Sharif\term4.5\dsd_lab\8\inst_mem.v" Line 14: Net <storage[31][19]> does not have a driver.
+
+Elaborating module <IF>.
+
+Elaborating module <data_mem>.
+
+Elaborating module <ld>.
+WARNING:HDLCompiler:1127 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 111: Assignment to mul_or_add_ld_out ignored, since the identifier is never used
+
+Elaborating module <CU>.
+
+Elaborating module <ADD_SUB>.
+WARNING:HDLCompiler:1127 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 147: Assignment to is_done_add ignored, since the identifier is never used
+
+Elaborating module <MUL>.
+WARNING:HDLCompiler:1127 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 159: Assignment to is_done_mul ignored, since the identifier is never used
+
+Elaborating module <EX>.
+WARNING:HDLCompiler:1127 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 181: Assignment to read_writenot_data_mem ignored, since the identifier is never used
+WARNING:HDLCompiler:634 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 17: Net <freeze> does not have a driver.
+WARNING:HDLCompiler:634 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 20: Net <input_inst[19]> does not have a driver.
+WARNING:HDLCompiler:634 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 119: Net <is_done> does not have a driver.
+WARNING:HDLCompiler:634 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" Line 166: Net <data_mem_rw> does not have a driver.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <CPU>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\data_path.v".
+INFO:Xst:3210 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" line 91: Output port <mul_or_add_ld_out> of the instance <load_pipeline> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" line 138: Output port <is_done> of the instance <adder_subtracter> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" line 150: Output port <is_done> of the instance <multiplier> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "H:\Sharif\term4.5\dsd_lab\8\data_path.v" line 168: Output port <data_rw_out> of the instance <execute_pipeline> is unconnected or connected to loadless signal.
+WARNING:Xst:653 - Signal <input_inst> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <freeze> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <is_done> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <data_mem_rw> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    WARNING:Xst:2404 -  FFs/Latches <write_address<1:5>> (without init value) have a constant value of 0 in block <CPU>.
+    WARNING:Xst:2404 -  FFs/Latches <inst_mem_read_write<0:0>> (without init value) have a constant value of 1 in block <CPU>.
+    WARNING:Xst:2404 -  FFs/Latches <read_address<4:0>> (without init value) have a constant value of 0 in block <CPU>.
+    Summary:
+	inferred   1 Multiplexer(s).
+Unit <CPU> synthesized.
+
+Synthesizing Unit <inst_mem>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\inst_mem.v".
+WARNING:Xst:647 - Input <in_data> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <read_address> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <write_address> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <read_writenot> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:653 - Signal <storage<31>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<30>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<29>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<28>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<27>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<26>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<25>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<24>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<23>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<22>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<21>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+WARNING:Xst:653 - Signal <storage<20>> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 32-bit register for signal <i>.
+    Found 20-bit register for signal <out_data>.
+    Found 32-bit adder for signal <i[31]_GND_2_o_add_2_OUT> created at line 33.
+    Found 32x20-bit Read Only RAM for signal <i[5]_X_2_o_wide_mux_1_OUT>
+    Summary:
+	inferred   1 RAM(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  52 D-type flip-flop(s).
+	inferred   1 Multiplexer(s).
+Unit <inst_mem> synthesized.
+
+Synthesizing Unit <IF>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\if.v".
+WARNING:Xst:647 - Input <ld_inst_halt> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <freeze> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 20-bit register for signal <instruction_out>.
+    Summary:
+	inferred  20 D-type flip-flop(s).
+Unit <IF> synthesized.
+
+Synthesizing Unit <data_mem>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\data_mem.v".
+WARNING:Xst:647 - Input <enable> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 512-bit register for signal <n0080[511:0]>.
+    Found 8-bit register for signal <out_data1>.
+    Found 8-bit register for signal <out_data2>.
+    Found 8-bit 64-to-1 multiplexer for signal <read_address1[5]_storage[63][7]_wide_mux_1_OUT> created at line 65.
+    Found 8-bit 64-to-1 multiplexer for signal <read_address2[5]_storage[63][7]_wide_mux_2_OUT> created at line 66.
+    Summary:
+	inferred 528 D-type flip-flop(s).
+	inferred  66 Multiplexer(s).
+Unit <data_mem> synthesized.
+
+Synthesizing Unit <ld>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\ld.v".
+WARNING:Xst:647 - Input <ld_inst_halt> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <freeze> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 2-bit register for signal <alu_inst_out>.
+    Found 8-bit register for signal <data_out_1>.
+    Found 8-bit register for signal <data_out_2>.
+    Found 1-bit register for signal <halted_out>.
+    Found 1-bit register for signal <data_mem_write_out>.
+    Found 1-bit register for signal <mul_or_add_ld_out>.
+    Found 6-bit register for signal <write_adr_out>.
+    Summary:
+	inferred  27 D-type flip-flop(s).
+Unit <ld> synthesized.
+
+Synthesizing Unit <CU>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\controller.v".
+WARNING:Xst:647 - Input <is_done> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:653 - Signal <halted> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 1-bit register for signal <mul_or_add>.
+    WARNING:Xst:2404 -  FFs/Latches <data_mem_write<0:0>> (without init value) have a constant value of 1 in block <CU>.
+    Summary:
+	inferred   1 D-type flip-flop(s).
+Unit <CU> synthesized.
+
+Synthesizing Unit <ADD_SUB>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\add_sub.v".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:653 - Signal <is_done> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 4-bit subtractor for signal <in1[7]_in2[7]_sub_2_OUT> created at line 28.
+    Found 4-bit subtractor for signal <in1[3]_in2[3]_sub_3_OUT> created at line 29.
+    Found 4-bit adder for signal <in1[7]_in2[7]_add_4_OUT> created at line 31.
+    Found 4-bit adder for signal <in1[3]_in2[3]_add_5_OUT> created at line 32.
+    Summary:
+	inferred   4 Adder/Subtractor(s).
+	inferred   1 Multiplexer(s).
+Unit <ADD_SUB> synthesized.
+
+Synthesizing Unit <MUL>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\mul.v".
+WARNING:Xst:647 - Input <clk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <rst> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:653 - Signal <is_done> is used but never assigned. This sourceless signal will be automatically connected to value GND.
+    Found 4-bit subtractor for signal <out<7:4>> created at line 19.
+    Found 4-bit adder for signal <out<3:0>> created at line 18.
+    Found 4x4-bit multiplier for signal <n0010> created at line 18.
+    Found 4x4-bit multiplier for signal <n0011> created at line 18.
+    Found 4x4-bit multiplier for signal <n0012> created at line 19.
+    Found 4x4-bit multiplier for signal <n0013> created at line 19.
+    Summary:
+	inferred   4 Multiplier(s).
+	inferred   2 Adder/Subtractor(s).
+Unit <MUL> synthesized.
+
+Synthesizing Unit <EX>.
+    Related source file is "H:\Sharif\term4.5\dsd_lab\8\ex.v".
+WARNING:Xst:647 - Input <ld_inst_halt> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <freeze> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+    Found 8-bit register for signal <alu_output_out>.
+    Found 6-bit register for signal <write_addr_out>.
+    Found 1-bit register for signal <data_mem_write_out_ex>.
+    Found 1-bit register for signal <halted_out>.
+    WARNING:Xst:2404 -  FFs/Latches <data_rw_out<0:0>> (without init value) have a constant value of 0 in block <EX>.
+    Summary:
+	inferred  16 D-type flip-flop(s).
+Unit <EX> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 32x20-bit single-port Read Only RAM                   : 1
+# Multipliers                                          : 4
+ 4x4-bit multiplier                                    : 4
+# Adders/Subtractors                                   : 7
+ 32-bit adder                                          : 1
+ 4-bit adder                                           : 3
+ 4-bit subtractor                                      : 3
+# Registers                                            : 18
+ 1-bit register                                        : 6
+ 2-bit register                                        : 1
+ 20-bit register                                       : 2
+ 32-bit register                                       : 1
+ 512-bit register                                      : 1
+ 6-bit register                                        : 2
+ 8-bit register                                        : 5
+# Multiplexers                                         : 69
+ 32-bit 2-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 66
+ 8-bit 64-to-1 multiplexer                             : 2
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:1290 - Hierarchical block <instrucion_memory> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <inst_fetch_pipeline> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <data_memory> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <adder_subtracter> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <multiplier> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 0 in block <load_pipeline>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 0 in block <execute_pipeline>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1290 - Hierarchical block <load_pipeline> is unconnected in block <CPU>.
+   It will be removed from the design.
+WARNING:Xst:1290 - Hierarchical block <controll_unit> is unconnected in block <CPU>.
+   It will be removed from the design.
+
+Synthesizing (advanced) Unit <MUL>.
+	Multiplier <Mmult_n0010> in block <MUL> and adder/subtractor <Madd_out<3:0>> in block <MUL> are combined into a MAC<Maddsub_n0010>.
+	Multiplier <Mmult_n0013> in block <MUL> and adder/subtractor <Msub_out<7:4>> in block <MUL> are combined into a MAC<Maddsub_n0013>.
+Unit <MUL> synthesized (advanced).
+
+Synthesizing (advanced) Unit <inst_mem>.
+INFO:Xst:3231 - The small RAM <Mram_i[5]_X_2_o_wide_mux_1_OUT> will be implemented on LUTs in order to maximize performance and save block RAM resources. If you want to force its implementation on block, use option/constraint ram_style.
+    -----------------------------------------------------------------------
+    | ram_type           | Distributed                         |          |
+    -----------------------------------------------------------------------
+    | Port A                                                              |
+    |     aspect ratio   | 32-word x 20-bit                    |          |
+    |     weA            | connected to signal <GND>           | high     |
+    |     addrA          | connected to signal <i<4:0>>        |          |
+    |     diA            | connected to signal <GND>           |          |
+    |     doA            | connected to internal node          |          |
+    -----------------------------------------------------------------------
+Unit <inst_mem> synthesized (advanced).
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# RAMs                                                 : 1
+ 32x20-bit single-port distributed Read Only RAM       : 1
+# MACs                                                 : 2
+ 4x4-to-4-bit MAC                                      : 2
+# Multipliers                                          : 2
+ 4x4-bit multiplier                                    : 2
+# Adders/Subtractors                                   : 5
+ 32-bit adder                                          : 1
+ 4-bit adder                                           : 2
+ 4-bit subtractor                                      : 2
+# Registers                                            : 644
+ Flip-Flops                                            : 644
+# Multiplexers                                         : 69
+ 32-bit 2-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 66
+ 8-bit 64-to-1 multiplexer                             : 2
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 0 in block <ld>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_mem_write_out> (without init value) has a constant value of 1 in block <ld>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <out_data_5> (without init value) has a constant value of 0 in block <inst_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <out_data_11> (without init value) has a constant value of 0 in block <inst_mem>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <out_data_17> (without init value) has a constant value of 0 in block <inst_mem>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <out_data_0> in Unit <inst_mem> is equivalent to the following FF/Latch, which will be removed : <out_data_12> 
+INFO:Xst:2261 - The FF/Latch <out_data_4> in Unit <inst_mem> is equivalent to the following FF/Latch, which will be removed : <out_data_10> 
+
+Optimizing unit <IF> ...
+
+Optimizing unit <ld> ...
+
+Optimizing unit <EX> ...
+
+Optimizing unit <CPU> ...
+
+Optimizing unit <inst_mem> ...
+WARNING:Xst:2677 - Node <i_5> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_6> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_7> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_8> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_9> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_10> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_11> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_12> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_13> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_14> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_15> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_16> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_17> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_18> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_19> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_20> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_21> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_22> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_23> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_24> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_25> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_26> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_27> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_28> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_29> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_30> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_31> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_5> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_6> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_7> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_8> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_9> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_10> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_11> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_12> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_13> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_14> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_15> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_16> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_17> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_18> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_19> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_20> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_21> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_22> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_23> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_24> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_25> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_26> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_27> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_28> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_29> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_30> of sequential type is unconnected in block <inst_mem>.
+WARNING:Xst:2677 - Node <i_31> of sequential type is unconnected in block <inst_mem>.
+
+Optimizing unit <data_mem> ...
+WARNING:Xst:1710 - FF/Latch <execute_pipeline/halted_out> (without init value) has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:2677 - Node <controll_unit/mul_or_add> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <multiplier/Mmult_n0012> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <multiplier/Mmult_n0011> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <multiplier/Maddsub_n0013> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <multiplier/Maddsub_n0010> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_19> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_18> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_16> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_15> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_14> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_13> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_9> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_8> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/out_data_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/i_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/i_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/i_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/i_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <instrucion_memory/i_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_19> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_18> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_17> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_16> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_15> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_14> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_13> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_12> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_11> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_10> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_9> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_8> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <inst_fetch_pipeline/instruction_out_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data2_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/out_data1_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_511> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_510> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_509> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_508> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_507> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_506> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_505> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_504> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_503> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_502> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_501> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_500> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_499> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_498> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_497> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_496> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_495> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_494> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_493> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_492> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_491> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_490> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_489> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_488> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_487> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_486> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_485> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_484> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_483> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_482> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_481> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_480> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_479> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_478> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_477> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_476> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_475> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_474> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_473> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_472> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_471> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_470> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_469> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_468> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_467> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_466> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_465> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_464> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_463> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_462> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_461> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_460> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_459> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_458> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_457> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_456> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_455> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_454> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_453> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_452> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_451> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_450> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_449> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_448> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_447> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_446> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_445> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_444> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_443> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_442> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_441> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_440> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_439> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_438> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_437> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_436> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_435> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_434> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_433> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_432> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_431> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_430> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_429> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_428> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_427> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_426> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_425> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_424> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_423> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_422> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_421> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_420> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_419> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_418> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_417> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_416> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_415> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_414> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_413> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_412> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_411> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_410> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_409> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_408> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_407> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_406> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_405> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_404> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_403> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_402> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_401> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_400> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_399> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_398> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_397> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_396> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_395> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_394> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_393> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_392> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_391> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_390> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_389> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_388> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_387> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_386> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_385> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_384> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_383> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_382> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_381> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_380> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_379> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_378> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_377> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_376> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_375> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_374> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_373> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_372> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_371> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_370> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_369> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_368> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_367> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_366> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_365> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_364> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_363> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_362> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_361> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_360> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_359> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_358> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_357> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_356> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_355> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_354> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_353> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_352> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_351> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_350> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_349> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_348> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_347> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_346> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_345> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_344> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_343> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_342> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_341> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_340> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_339> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_338> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_337> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_336> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_335> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_334> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_333> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_332> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_331> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_330> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_329> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_328> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_327> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_326> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_325> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_324> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_323> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_322> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_321> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_320> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_319> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_318> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_317> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_316> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_315> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_314> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_313> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_312> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_311> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_310> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_309> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_308> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_307> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_306> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_305> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_304> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_303> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_302> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_301> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_300> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_299> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_298> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_297> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_296> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_295> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_294> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_293> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_292> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_291> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_290> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_289> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_288> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_287> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_286> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_285> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_284> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_283> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_282> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_281> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_280> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_279> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_278> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_277> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_276> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_275> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_274> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_273> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_272> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_271> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_270> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_269> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_268> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_267> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_266> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_265> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_264> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_263> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_262> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_261> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_260> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_259> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_258> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_257> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_256> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_255> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_254> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_253> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_252> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_251> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_250> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_249> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_248> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_247> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_246> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_245> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_244> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_243> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_242> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_241> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_240> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_239> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_238> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_237> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_236> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_235> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_234> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_233> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_232> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_231> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_230> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_229> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_228> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_227> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_226> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_225> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_224> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_223> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_222> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_221> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_220> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_219> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_218> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_217> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_216> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_215> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_214> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_213> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_212> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_211> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_210> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_209> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_208> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_207> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_206> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_205> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_204> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_203> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_202> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_201> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_200> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_199> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_198> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_197> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_196> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_195> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_194> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_193> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_192> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_191> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_190> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_189> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_188> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_187> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_186> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_185> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_184> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_183> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_182> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_181> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_180> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_179> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_178> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_177> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_176> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_175> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_174> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_173> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_172> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_171> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_170> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_169> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_168> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_167> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_166> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_165> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_164> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_163> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_162> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_161> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_160> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_159> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_158> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_157> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_156> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_155> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_154> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_153> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_152> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_151> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_150> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_149> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_148> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_147> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_146> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_145> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_144> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_143> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_142> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_141> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_140> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_139> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_138> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_137> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_136> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_135> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_134> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_133> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_132> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_131> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_130> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_129> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_128> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_127> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_126> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_125> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_124> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_123> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_122> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_121> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_120> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_119> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_118> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_117> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_116> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_115> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_114> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_113> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_112> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_111> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_110> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_109> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_108> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_107> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_106> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_105> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_104> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_103> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_102> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_101> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_100> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_99> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_98> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_97> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_96> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_95> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_94> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_93> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_92> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_91> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_90> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_89> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_88> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_87> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_86> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_85> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_84> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_83> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_82> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_81> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_80> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_79> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_78> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_77> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_76> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_75> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_74> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_73> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_72> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_71> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_70> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_69> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_68> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_67> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_66> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_65> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_64> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_63> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_62> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_61> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_60> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_59> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_58> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_57> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_56> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_55> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_54> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_53> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_52> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_51> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_50> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_49> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_48> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_47> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_46> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_45> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_44> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_43> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_42> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_41> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_40> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_39> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_38> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_37> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_36> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_35> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_34> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_33> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_32> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_31> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_30> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_29> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_28> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_27> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_26> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_25> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_24> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_23> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_22> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_21> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_20> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_19> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_18> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_17> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_16> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_15> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_14> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_13> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_12> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_11> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_10> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_9> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_8> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <data_memory/storage_0_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/mul_or_add_ld_out> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_2_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/data_out_1_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/alu_inst_out_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/alu_inst_out_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/write_adr_out_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/write_adr_out_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/write_adr_out_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/write_adr_out_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/write_adr_out_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <load_pipeline/write_adr_out_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/data_mem_write_out_ex> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/write_addr_out_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/write_addr_out_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/write_addr_out_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/write_addr_out_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/write_addr_out_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/write_addr_out_0> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_7> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_6> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_5> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_4> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_3> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_2> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_1> of sequential type is unconnected in block <CPU>.
+WARNING:Xst:2677 - Node <execute_pipeline/alu_output_out_0> of sequential type is unconnected in block <CPU>.
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block CPU, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : CPU.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1
+#      GND                         : 1
+# IO Buffers                       : 1
+#      OBUF                        : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx9tqg144-2 
+
+
+Slice Logic Utilization: 
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:      0
+   Number with an unused Flip Flop:       0  out of      0         
+   Number with an unused LUT:             0  out of      0         
+   Number of fully used LUT-FF pairs:     0  out of      0         
+   Number of unique control sets:         0
+
+IO Utilization: 
+ Number of IOs:                           3
+ Number of bonded IOBs:                   1  out of    102     0%  
+
+Specific Feature Utilization:
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -2
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 9.00 secs
+Total CPU time to Xst completion: 9.10 secs
+ 
+--> 
+
+Total memory usage is 4506704 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :  732 (   0 filtered)
+Number of infos    :    7 (   0 filtered)
+
