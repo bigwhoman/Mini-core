@@ -4,7 +4,7 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
@@ -246,9 +246,7 @@ Unit <ld> synthesized.
 Synthesizing Unit <CU>.
     Related source file is "H:\Sharif\term4.5\dsd_lab\8\controller.v".
 WARNING:Xst:647 - Input <is_done> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-WARNING:Xst:653 - Signal <halted> is used but never assigned. This sourceless signal will be automatically connected to value GND.
     Found 1-bit register for signal <mul_or_add>.
-    WARNING:Xst:2404 -  FFs/Latches <data_mem_write<0:0>> (without init value) have a constant value of 1 in block <CU>.
     Summary:
 	inferred   1 D-type flip-flop(s).
 Unit <CU> synthesized.
@@ -337,8 +335,8 @@ WARNING:Xst:1290 - Hierarchical block <adder_subtracter> is unconnected in block
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <multiplier> is unconnected in block <CPU>.
    It will be removed from the design.
-WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 0 in block <load_pipeline>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 0 in block <execute_pipeline>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 1 in block <load_pipeline>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 1 in block <execute_pipeline>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1290 - Hierarchical block <load_pipeline> is unconnected in block <CPU>.
    It will be removed from the design.
 WARNING:Xst:1290 - Hierarchical block <controll_unit> is unconnected in block <CPU>.
@@ -389,8 +387,8 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
-WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 0 in block <ld>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <data_mem_write_out> (without init value) has a constant value of 1 in block <ld>. This FF/Latch will be trimmed during the optimization process.
+INFO:Xst:2261 - The FF/Latch <halted_out> in Unit <ld> is equivalent to the following FF/Latch, which will be removed : <data_mem_write_out> 
+WARNING:Xst:1710 - FF/Latch <halted_out> (without init value) has a constant value of 1 in block <ld>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1710 - FF/Latch <out_data_5> (without init value) has a constant value of 0 in block <inst_mem>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <out_data_11> (without init value) has a constant value of 0 in block <inst_mem>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <out_data_17> (without init value) has a constant value of 0 in block <inst_mem>. This FF/Latch will be trimmed during the optimization process.
@@ -462,7 +460,7 @@ WARNING:Xst:2677 - Node <i_30> of sequential type is unconnected in block <inst_
 WARNING:Xst:2677 - Node <i_31> of sequential type is unconnected in block <inst_mem>.
 
 Optimizing unit <data_mem> ...
-WARNING:Xst:1710 - FF/Latch <execute_pipeline/halted_out> (without init value) has a constant value of 0 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1710 - FF/Latch <execute_pipeline/halted_out> (without init value) has a constant value of 1 in block <CPU>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <controll_unit/mul_or_add> of sequential type is unconnected in block <CPU>.
 WARNING:Xst:2677 - Node <multiplier/Mmult_n0012> of sequential type is unconnected in block <CPU>.
 WARNING:Xst:2677 - Node <multiplier/Mmult_n0011> of sequential type is unconnected in block <CPU>.
@@ -1109,7 +1107,7 @@ Top Level Output File Name         : CPU.ngc
 Primitive and Black Box Usage:
 ------------------------------
 # BELS                             : 1
-#      GND                         : 1
+#      VCC                         : 1
 # IO Buffers                       : 1
 #      OBUF                        : 1
 
@@ -1179,14 +1177,14 @@ Cross Clock Domains Report:
 =========================================================================
 
 
-Total REAL time to Xst completion: 9.00 secs
-Total CPU time to Xst completion: 9.10 secs
+Total REAL time to Xst completion: 8.00 secs
+Total CPU time to Xst completion: 8.45 secs
  
 --> 
 
-Total memory usage is 4506704 kilobytes
+Total memory usage is 4506696 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  732 (   0 filtered)
-Number of infos    :    7 (   0 filtered)
+Number of warnings :  729 (   0 filtered)
+Number of infos    :    8 (   0 filtered)
 
