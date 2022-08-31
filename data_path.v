@@ -108,17 +108,20 @@ wire data_mem_write_ld;
 CU controll_unit(
 //inputs
 .op(inst_if_out[19:18]),
-
+.is_done(is_done),
 //outputs
 .halted(halted_cu_out),
-.data_mem_write(data_mem_write)
+.data_mem_write(data_mem_write_ld)
 );
 
 // ---------------------------- execute and pipeline ---------------------------------------------------
 
+wire is_done_mul, is_done_adder, is_done;
 wire [7:0] add_sub_out;
 wire [7:0] mul_out;
 // [7:0] out
+
+and and1(is_done, is_done_adder, is_done_mul);
 
 ADD_SUB adder_subtracter(
 // inputs 
@@ -127,7 +130,8 @@ ADD_SUB adder_subtracter(
     .add_or_sub(alu_inst_ld_out),
 
 //outputs
-    .out(add_sub_out)
+    .out(add_sub_out),
+    .is_done(is_done_adder)
 );
 
 MUL multiplier(
@@ -135,8 +139,10 @@ MUL multiplier(
     .in1(data_out_1_ld),
     .in2(data_out_2_ld),
 
+
 //outputs
-    .out(mul_out)
+    .out(mul_out),
+    .is_done(is_done_mul)
 
 );
 

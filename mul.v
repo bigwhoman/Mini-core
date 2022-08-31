@@ -1,6 +1,7 @@
 module MUL(
  input [7:0] in1,in2,
- output reg [15:0] out
+ output reg [15:0] out,
+ output reg is_done
 );
 
 reg signed [3:0] a,b,c,d;

@@ -1,7 +1,8 @@
 module ADD_SUB(
  input [7:0] in1,in2,
  input [1:0] add_or_sub,
- output reg [7:0] out
+ output reg [7:0] out,
+ output reg is_done
 );
 
 reg signed [3:0] a,b,c,d;
