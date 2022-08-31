@@ -17,13 +17,11 @@ module EX(
 
 
 always @(posedge clk) begin
-  // if(!freeze && ld_inst_halt) begin
     halted_out = halted;
     data_rw_out = data_rw;
     alu_output_out = alu_output;
     write_addr_out = write_addr;
     data_mem_write_out_ex = data_mem_write_ex;
-  // end
 end
 
 
