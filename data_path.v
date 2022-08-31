@@ -8,7 +8,19 @@ module CPU (
 
 
 // freeze the pipelines
-wire freeze;
+wire freeze = mul_or_add ? is_done_mul : is_done_add;
+
+
+/*
+operation === > 00 01 10 
+
+mul_or_add === > 0 => is done add ----- 1 => is done mul
+
+
+@(posedge halted)
+$finish()
+
+*/
 
 
 // -------------------------  instruction fetch and pipeline --------------------------------------
@@ -105,6 +117,10 @@ wire halted_cu_out;
 wire data_mem_write_ld;
 
 
+// ----------------------------- controll unit ---------------------------------------------------------
+
+
+
 CU controll_unit(
 //inputs
 .op(inst_if_out[19:18]),
@@ -171,10 +187,6 @@ EX execute_pipeline(
 .write_addr_out(write_adr_ex_out)
 .data_mem_write_out_ex(data_mem_write_out_ex)
 );
-
-
-// ----------------------------- controll unit ---------------------------------------------------------
-
 
 
 // --------------------------- reset, halt and instruction fetch(pointer) for the CPU ----------------------------------------------
