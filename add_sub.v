@@ -9,17 +9,17 @@ module ADD_SUB(
 reg signed [3:0] a,b,c,d;
 reg counter;
 
-always @(posedge clk,negedge rst) begin
-  if(rst == 0) begin
-    counter = 0;
-    is_done = 0;
-  end
-  else begin
-    if(counter < 2) begin
-    counter = counter + 1;
-    is_done = 0;
-    end
-    if(counter == 2) begin
+always @* begin
+  // if(rst == 0) begin
+  //   counter = 0;
+  //   is_done = 0;
+  // end
+  // else begin
+  //   if(counter < 2) begin
+  //   counter = counter + 1;
+  //   is_done = 0;
+  //   end
+  //   if(counter == 2) begin
     a = in1[7:4];
     b = in1[3:0];
     c = in2[7:4];
@@ -31,10 +31,10 @@ always @(posedge clk,negedge rst) begin
       out[7:4] = a + c;
       out[3:0] = b + d;
     end
-    is_done = 1;
-    counter = 0;
-  end
-  end
+  //   is_done = 1;
+  //   counter = 0;
+  // end
+  // end
 end
 
 endmodule 

@@ -1,35 +1,31 @@
+// `include "data_mem.v"
+// `include "controller.v"
+// `include "inst_mem.v"
+// `include "if.v"
+// `include "ld.v"
+// `include "ex.v"
+// `include "mul.v"
+// `include "add_sub.v"
+
+
 module CPU (
  input clk,rst,
- output reg halted
+ output halted
 );
 
 
-// freeze the pipelines
-wire freeze = mul_or_add_ld_out ? !is_done_mul : !is_done_add;
+reg freeze ;
 
 reg inst_mem_read_write;
 wire [19:0] input_inst;
 wire [7:0] memory_data_in;
 wire [5:0] mem_write_adr_imediate;
 
-/*
-operation === > 00 01 10 
-
-mul_or_add === > 0 => is done add ----- 1 => is done mul
-
-
-@(posedge halted)
-$finish()
-
-*/
-
-
 // -------------------------  instruction fetch and pipeline --------------------------------------
 
 reg [4:0] read_address;
 reg [4:0] write_address;
 
-wire inst_memory_enable;
 wire [19:0] inst_out_data;
 wire [19:0] inst_if_out;
 
@@ -40,7 +36,7 @@ inst_mem instrucion_memory(
 .write_address(write_address),
 .clk(clk),
 .rst(rst),
-.enable(inst_memory_enable),
+.enable(1'b1),
 .in_data(input_inst),
 
 //outputs
@@ -61,17 +57,15 @@ IF inst_fetch_pipeline(
 
 // --------------------------- load data and pipeline ------------------------------------------------
 
-// [7 : 0] out_data1
-// [7 : 0] out_data2
 wire read_writenot_data_mem,data_mem_write_out_ex;
-wire data_mem_enable;
 wire [7:0] mem_data_out_1,mem_data_out_2;
-
+wire [5:0] write_adr_ex_out;
+wire [7:0] alu_ex_out;
 data_mem data_memory(
 //inputs
     .clk(clk),
     .rst(rst),
-    .enable(data_mem_enable),
+    .enable(1'b1),
     .write(data_mem_write_out_ex),
     .in_data(alu_ex_out),
     .read_address1(inst_if_out[17:12]),
@@ -85,13 +79,16 @@ data_mem data_memory(
 
 );
 
-wire halted_ld_out;
+wire halted_ld_out,data_mem_write_ld;
 wire [5:0] write_adr_mem_ld_out;
 wire [1:0] alu_inst_ld_out;
 wire [7:0] data_out_1_ld,data_out_2_ld;
 wire data_mem_write_out_ld;
+wire mul_or_add_ld_out,mul_or_add_ld;
+wire halted_cu_out;
 
-LD load_pipeline(
+
+ld load_pipeline(
 //inputs
 .ld_inst_halt(inst_mem_read_write),
 .halted(halted_cu_out),
@@ -116,18 +113,16 @@ LD load_pipeline(
 );
 
 
-wire halted_cu_out;
-wire data_mem_write_ld;
-
 
 // ----------------------------- controll unit ---------------------------------------------------------
 
-wire mul_or_add_ld, mul_or_add_ld_out;
+wire is_done;
 
 CU controll_unit(
 //inputs
 .op(inst_if_out[19:18]),
 .is_done(is_done),
+.clk(clk),
 //outputs
 .halted(halted_cu_out),
 .data_mem_write(data_mem_write_ld),
@@ -136,19 +131,17 @@ CU controll_unit(
 
 // ---------------------------- execute and pipeline ---------------------------------------------------
 
-wire is_done_mul, is_done_add, is_done;
+wire is_done_mul, is_done_add;
 wire [7:0] add_sub_out;
 wire [7:0] mul_out;
-// [7:0] out
-
-// and and1(is_done, is_done_adder, is_done_mul);
 
 ADD_SUB adder_subtracter(
 // inputs 
     .in1(data_out_1_ld),
     .in2(data_out_2_ld),
     .add_or_sub(alu_inst_ld_out),
-
+    .clk(clk),
+    .rst(rst),
 //outputs
     .out(add_sub_out),
     .is_done(is_done_add)
@@ -158,7 +151,8 @@ MUL multiplier(
 // inputs 
     .in1(data_out_1_ld),
     .in2(data_out_2_ld),
-
+    .clk(clk),
+    .rst(rst),
 
 //outputs
     .out(mul_out),
@@ -166,12 +160,9 @@ MUL multiplier(
 
 );
 
-// multiplexer  --- > if alu instruction is 2 its mul if 1 or 0 its add/sub and if 3 its halted 
 
 wire [7:0] alu_out = alu_inst_ld_out == 2 ? mul_out : add_sub_out;
 
-wire [7:0] alu_ex_out;
-wire [5:0] write_adr_ex_out;
 wire data_mem_rw;
 
 EX execute_pipeline(
@@ -196,33 +187,12 @@ EX execute_pipeline(
 
 // --------------------------- reset, halt and instruction fetch(pointer) for the CPU ----------------------------------------------
 
-always @(posedge clk,negedge rst) begin
-  if(rst == 0) begin
-    halted = 0;
+always @(negedge rst) begin
     read_address = 0;
     write_address = 0;
     inst_mem_read_write = 1;
-  end else begin
-    if(inst_mem_read_write) begin
-      read_address = read_address + 1;
-    end else begin
-      write_address = write_address + 1;
-    end
-  end
 end
 
 
 
 endmodule
-
-
-
-
-
-
-
-
-
-
-
-// TODO : review the system and pipelining --- controll unit and pipeline module design -- mem data fill inputs

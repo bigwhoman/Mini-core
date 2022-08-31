@@ -1,9 +1,11 @@
+// `include "../data_path.v"
+
 module tb_;
 reg clk;
 reg rst;
 wire halted;
  
-CPU cpu(
+CPU uut(
     .rst (rst),
     .clk (clk),
     .halted(halted)

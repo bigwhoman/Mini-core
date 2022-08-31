@@ -2,7 +2,6 @@ module data_mem(
     input clk,
     input rst,
     input enable,
-    input read,
     input write,
     input [7 : 0] in_data,
     input [5 : 0] read_address1,
@@ -17,8 +16,9 @@ module data_mem(
 reg [7 : 0] storage [63 : 0];
 integer i;
 
-always @(negedge rst) begin
-    for(i = 0 ; i < 64 ; i = i + 1) begin
+always @(posedge clk,negedge rst) begin
+	  if( rst == 0 ) begin
+	  for(i = 0 ; i < 64 ; i = i + 1) begin
         storage[i] = 0;
     end
 
@@ -59,22 +59,16 @@ always @(negedge rst) begin
     storage [19] = 8'b1110_0001; // -2 + 1i
     //multiplication
     //10_010010_010011_010100
-end
-
-always @(posedge clk) begin
-
-    if(enable) begin
+	  end else begin
         
-        
+        // $display("r1 : %b, r2 : %b",read_address1,read_address2);
         out_data1 = storage[read_address1];
         out_data2 = storage[read_address2];
         
         if(write) begin
             storage[write_address] = in_data;
         end
-
     end
-    
 end
 
 endmodule
