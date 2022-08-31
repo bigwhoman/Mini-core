@@ -1,4 +1,5 @@
 module ADD_SUB(
+ input clk,rst,
  input [7:0] in1,in2,
  input [1:0] add_or_sub,
  output reg [7:0] out,
@@ -6,9 +7,18 @@ module ADD_SUB(
 );
 
 reg signed [3:0] a,b,c,d;
+reg counter;
 
-
-always @* begin
+always @(posedge clk,negedge rst) begin
+  if(rst == 0) begin
+    counter = 0;
+  end
+  else begin
+    if(counter < 2) begin
+    counter = counter + 1;
+    is_done = 0;
+    end
+    if(counter == 2) begin
     a = in1[7:4];
     b = in1[3:0];
     c = in2[7:4];
@@ -20,6 +30,10 @@ always @* begin
       out[7:4] = a + c;
       out[3:0] = b + d;
     end
+    is_done = 1;
+    coutner = 0;
+  end
+  end
 end
 
 endmodule 

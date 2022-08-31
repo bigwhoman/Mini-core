@@ -8,7 +8,7 @@ module CPU (
 
 
 // freeze the pipelines
-wire freeze = mul_or_add ? is_done_mul : is_done_add;
+wire freeze = mul_or_add_ld_out ? !is_done_mul : !is_done_add;
 
 
 /*
@@ -101,6 +101,7 @@ LD load_pipeline(
 .data_mem_write(data_mem_write_ld),
 .freeze(freeze),
 .clk(clk),
+.mul_or_add_ld(mul_or_add_ld),
 
 //outputs
 .halted_out(halted_ld_out),
@@ -108,7 +109,8 @@ LD load_pipeline(
 .alu_inst_out(alu_inst_ld_out),
 .data_out_1(data_out_1_ld),
 .data_out_2(data_out_2_ld),
-.data_mem_write_out(data_mem_write_out_ld)
+.data_mem_write_out(data_mem_write_out_ld),
+.mul_or_add_ld_out(mul_or_add_ld_out)
 
 );
 
@@ -119,7 +121,7 @@ wire data_mem_write_ld;
 
 // ----------------------------- controll unit ---------------------------------------------------------
 
-
+wire mul_or_add_ld, mul_or_add_ld_out;
 
 CU controll_unit(
 //inputs
@@ -127,17 +129,18 @@ CU controll_unit(
 .is_done(is_done),
 //outputs
 .halted(halted_cu_out),
-.data_mem_write(data_mem_write_ld)
+.data_mem_write(data_mem_write_ld),
+.mul_or_add(mul_or_add_ld)
 );
 
 // ---------------------------- execute and pipeline ---------------------------------------------------
 
-wire is_done_mul, is_done_adder, is_done;
+wire is_done_mul, is_done_add, is_done;
 wire [7:0] add_sub_out;
 wire [7:0] mul_out;
 // [7:0] out
 
-and and1(is_done, is_done_adder, is_done_mul);
+// and and1(is_done, is_done_adder, is_done_mul);
 
 ADD_SUB adder_subtracter(
 // inputs 
@@ -147,7 +150,7 @@ ADD_SUB adder_subtracter(
 
 //outputs
     .out(add_sub_out),
-    .is_done(is_done_adder)
+    .is_done(is_done_add)
 );
 
 MUL multiplier(
@@ -184,7 +187,7 @@ EX execute_pipeline(
 .halted_out(halted),
 .data_rw_out(read_writenot_data_mem),
 .alu_output_out(alu_ex_out),
-.write_addr_out(write_adr_ex_out)
+.write_addr_out(write_adr_ex_out),
 .data_mem_write_out_ex(data_mem_write_out_ex)
 );
 
