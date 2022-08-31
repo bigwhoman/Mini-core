@@ -1,11 +1,11 @@
-// `include "data_mem.v"
-// `include "controller.v"
-// `include "inst_mem.v"
-// `include "if.v"
-// `include "ld.v"
-// `include "ex.v"
-// `include "mul.v"
-// `include "add_sub.v"
+`include "data_mem.v"
+`include "controller.v"
+`include "inst_mem.v"
+`include "if.v"
+`include "ld.v"
+`include "ex.v"
+`include "mul.v"
+`include "add_sub.v"
 
 
 module CPU (

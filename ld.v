@@ -21,7 +21,6 @@ output reg mul_or_add_ld_out
 );
 
 always @(posedge clk) begin
-    // if(ld_inst_halt && !freeze) begin
       write_adr_out = write_adr;
       alu_inst_out = alu_inst;
       data_out_1 = mem_data_1;
@@ -29,7 +28,6 @@ always @(posedge clk) begin
       halted_out = halted;
       data_mem_write_out = data_mem_write;
       mul_or_add_ld_out = mul_or_add_ld;
-    // end
 end
 
 

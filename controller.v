@@ -11,7 +11,7 @@ output reg mul_or_add
 always @(posedge clk) begin
 
     
-    if(op != 11) begin
+    if(op != 3) begin
         data_mem_write = 1;
     end 
     
@@ -22,6 +22,9 @@ always @(posedge clk) begin
     if(op == 2) begin
         mul_or_add = 0;
     end
+
+    if(op == 3)
+     halted = 1;
 
 
 end
