@@ -31,7 +31,7 @@ always @(posedge clk,negedge rst) begin
       out[3:0] = b + d;
     end
     is_done = 1;
-    coutner = 0;
+    counter = 0;
   end
   end
 end
